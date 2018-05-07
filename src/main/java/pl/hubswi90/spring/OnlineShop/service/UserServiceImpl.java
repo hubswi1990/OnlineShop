@@ -11,35 +11,6 @@ import pl.hubswi90.spring.OnlineShop.repository.UserRepository;
 import java.util.Arrays;
 import java.util.HashSet;
 
-/**
-@Service
-public class UserServiceImpl implements UserService {
-
-    @Autowired
-    UserRepository userRepository;
-
-    @Override
-    public void saveUserInDatabase(User user) {
-        userRepository.saveUser(user);
-    }
-
-    @Override
-    public User getUserById(long id) {
-        return userRepository.getUserById(id);
-    }
-
-    @Override
-    public void UpdateUserDataInDatabase(User user) {
-        userRepository.updateUser(user);
-    }
-
-    @Override
-    public void deleteUserFromBatabase(User user) {
-        userRepository.removeUser(user);
-    }
-}
-**/
-
 @Service("userService")
 public class UserServiceImpl implements UserService{
 

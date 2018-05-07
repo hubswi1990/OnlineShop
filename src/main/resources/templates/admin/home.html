@@ -64,7 +64,37 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3">qwerty</div>
-			<div class="col-md-9"><p th:utext="${adminMessage}"></p></div>
+			<div class="col-md-9">
+				<div class="card">
+					<div class="card-header">
+						Featured
+
+						<div class="btn-group pull-right">
+							<a href="${pageContext.request.contextPath}/admin/apartment/add" data-toggle="tooltip" data-original-title="Add New" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+							</a>
+							<a href="#" data-toggle="tooltip" data-original-title="Import" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-import" aria-hidden="true"></span>
+							</a>
+							<a href="#" data-toggle="tooltip" data-original-title="Export" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-export" aria-hidden="true"></span>
+							</a>
+							<a href="${pageContext.request.contextPath}/admin/apartment" data-toggle="tooltip" data-original-title="Refresh" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+							</a>
+						</div>
+
+					</div>
+
+				</div>
+					<div class="card-body">
+						<h5 class="card-title">Special title treatment</h5>
+						<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+						<a href="#" class="btn btn-primary">Go somewhere</a>
+						<p th:utext="${adminMessage}"></p></div>
+					</div>
+				</div>
+
 		</div>
 	</div>
 </section>
