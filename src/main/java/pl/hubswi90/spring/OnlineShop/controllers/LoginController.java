@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.hubswi90.spring.OnlineShop.domain.User;
 import pl.hubswi90.spring.OnlineShop.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -58,13 +60,16 @@ public class LoginController {
     }
 
     @RequestMapping(value="/admin/home", method = RequestMethod.GET)
-    public ModelAndView home(){
+    public ModelAndView home(HttpSession session){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
         modelAndView.setViewName("admin/home2");
+
+       session.setAttribute("userSessionAtribute", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+
         return modelAndView;
     }
 }
