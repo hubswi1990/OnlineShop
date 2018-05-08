@@ -1,0 +1,21 @@
+
+
+.MyElelment a:link {
+    text-decoration: none;
+    color: black;
+}
+
+.MyElelment a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.MyElelment a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+.MyElelment a:active {
+    text-decoration: underline;
+    color: black;
+}

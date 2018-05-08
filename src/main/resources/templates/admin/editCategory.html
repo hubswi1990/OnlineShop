@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/MyStyle.css}" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
-          integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
     <script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
 </head>
@@ -17,8 +16,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="">OnlineShop</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07"
-                aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarsExample07">
@@ -63,7 +61,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    Categories
+                    Featured
 
                     <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
                         <a th:href="@{/admin/category/add}">
@@ -77,36 +75,23 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table th:object="${userList}" id="userTable" border="1">
-
-                    </table>
-                    <table class="table" th:object="${categoryList}">
-                        <thead>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Name</th>
-                            <th>Created</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="category :${categoryList}">
-                            <th scope="row"><span th:text="${category.getCategoryId()}"/></th>
-                            <td th:text="${category.getCategoryName()}"></td>
-                            <td th:text="${category.getDate()}"></td>
-                            <td>
-                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                    <a th:href="@{/admin/category/edit/{id}(id=${category.getCategoryId()})}">
-                                        <button type="button" class="btn btn-light"><i class="fas fa-edit"> Edit</i></button>
-                                    </a>
-                                    <a th:href="@{/admin/category/delete/{id}(id=${category.getCategoryId()})}">
-                                        <button type="button" class="btn btn-light"><i class="fas fa-trash-alt"> Delete</i></button>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div th:if="${successMessage}" class="alert alert-success" role="alert">
+                        <span th:utext="${successMessage}"></span>
+                    </div>
+                    <form  autocomplete="off" action="#" th:action="@{/admin/category/edit}"
+                           th:object="${category}" method="post">
+                        <input type="hidden" th:field="*{categoryId}">
+                        <input type="hidden" th:field="*{date}">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Category Name:</label>
+                            <input type="text" th:field="*{categoryName}" class="form-control" id="exampleFormControlInput1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Description: </label>
+                            <textarea th:field="*{description}" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>

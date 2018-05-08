@@ -8,6 +8,7 @@ import pl.hubswi90.spring.OnlineShop.domain.Category;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -20,6 +21,7 @@ public class CategoryRepository {
     @Transactional
     public void saveCategory(Category category) {
 
+        category.setDate(LocalDate.now());
         em.persist(category);
     }
 

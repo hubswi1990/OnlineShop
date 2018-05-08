@@ -64,11 +64,10 @@ public class LoginController {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-        modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
         modelAndView.setViewName("admin/home2");
 
        session.setAttribute("userSessionAtribute", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+       session.setAttribute("adminMessage","Content Available Only for Users with Admin Role");
 
         return modelAndView;
     }

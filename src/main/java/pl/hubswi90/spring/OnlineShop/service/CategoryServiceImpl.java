@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.hubswi90.spring.OnlineShop.domain.Category;
 import pl.hubswi90.spring.OnlineShop.repository.CategoryRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -59,5 +60,14 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> getAllCategoryFromDatabase() {
 
         return categoryRepository.getAllCategory();
+    }
+
+    @Transactional
+    @Override
+    public void duplicateCategory(long id) {
+        Category category = categoryRepository.getCategorybyId(id);
+        Category newCategory = new Category(category.getCategoryName(), category.getDescription());
+        newCategory.setDate(LocalDate.now());
+        categoryRepository.saveCategory(newCategory);
     }
 }

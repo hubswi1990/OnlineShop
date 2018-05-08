@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/MyStyle.css}" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
     <script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
@@ -20,22 +21,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarsExample07">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin/home}">Dashboard <span class="sr-only">(current)</span></a>
+                </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="./home.html" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown07">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+                    <a class="nav-link" th:href="@{/admin/category}">Categories</a>
                 </li>
             </ul>
 
@@ -51,7 +41,7 @@
         <div class="col-12 mt-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a th:href="@{/admin/home}">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Categories</li>
                 </ol>
             </nav>
@@ -61,12 +51,10 @@
         <div class="col-md-3 mr-3">
             <div class="card" style="width: 18rem;">
                 <div class="card-header">
-                    Featured
+                    <i class="fas fa-cog"></i> Dashboard
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item MyElelment"><a th:href="@{/admin/category}"><i class="fas fa-folder-open"></i> Categories</a></li>
                 </ul>
             </div>
         </div>
@@ -76,10 +64,14 @@
                     Featured
 
                     <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-light"><i class="fas fa-plus"></i></button>
+                        <a th:href="@{/admin/category/add}">
+                            <button type="button" class="btn btn-light"><i class="fas fa-plus"></i></button>
+                        </a>
                         <button type="button" class="btn btn-light"><i class="fas fa-upload"></i></button>
                         <button type="button" class="btn btn-light"><i class="fas fa-download"></i></button>
-                        <button type="button" class="btn btn-light"><i class="fas fa-sync-alt"></i></button>
+                        <a th:href="@{/admin/category}">
+                            <button type="button" class="btn btn-light"><i class="fas fa-sync-alt"></i></button>
+                        </a>
                     </div>
                 </div>
                 <div class="card-body">

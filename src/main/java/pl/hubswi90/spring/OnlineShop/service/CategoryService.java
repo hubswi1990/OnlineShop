@@ -13,4 +13,6 @@ public interface CategoryService {
     public void removeCategoryByIdInDatabse(long id);
     public void removeCategoryByNameInDatabase(String name);
     public List<Category> getAllCategoryFromDatabase();
+
+    void duplicateCategory(long id);
 }

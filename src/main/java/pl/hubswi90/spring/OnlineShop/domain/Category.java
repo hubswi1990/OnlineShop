@@ -1,6 +1,7 @@
 package pl.hubswi90.spring.OnlineShop.domain;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "categories")
@@ -20,6 +21,8 @@ public class Category {
 
     @Column(columnDefinition = "TEXT")
     private String description;
+
+    private LocalDate date;
 
     @Deprecated
     public Category() {}
@@ -63,5 +66,13 @@ public class Category {
     public void setDescription(String description) {
 
         this.description = description;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }
