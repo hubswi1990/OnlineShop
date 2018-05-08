@@ -23,9 +23,8 @@ public class LoginController {
 
     @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-        return modelAndView;
+
+        return new ModelAndView("login");
     }
 
 
@@ -61,10 +60,9 @@ public class LoginController {
 
     @RequestMapping(value="/admin/home", method = RequestMethod.GET)
     public ModelAndView home(HttpSession session){
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView("admin/home2");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        modelAndView.setViewName("admin/home2");
 
        session.setAttribute("userSessionAtribute", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
        session.setAttribute("adminMessage","Content Available Only for Users with Admin Role");

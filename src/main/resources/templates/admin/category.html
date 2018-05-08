@@ -4,11 +4,38 @@
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/MyStyle.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/MyStyle.css}"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
           integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
     <script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#data').after('<ul class="pagination justify-content-center" id="nav"></ul>');
+
+            var rowsShown = 4;
+            var rowsTotal = $('#data tbody tr').length;
+            var numPages = rowsTotal/rowsShown;
+
+            for(i = 0;i < numPages;i++) {
+                var pageNum = i + 1;
+                $('#nav').append('<li class="page-item"><a class="page-link" href="#" rel="'+i+'">'+pageNum+'</a></li> ');
+            }
+
+            $('#data tbody tr').hide();
+            $('#data tbody tr').slice(0, rowsShown).show();
+            $('#nav li:first').addClass('active');
+            $('#nav li a').bind('click', function(){
+                $('#nav li').removeClass('active');
+                $(this.parentNode).addClass('active');
+                var currPage = $(this).attr('rel');
+                var startItem = currPage * rowsShown;
+                var endItem = startItem + rowsShown;
+                $('#data tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+                css('display','table-row').animate({opacity:1}, 300);
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -56,7 +83,8 @@
                     <i class="fas fa-cog"></i> Dashboard
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item MyElelment"><a th:href="@{/admin/category}"><i class="fas fa-folder-open"></i> Categories</a></li>
+                    <li class="list-group-item MyElelment"><a th:href="@{/admin/category}"><i
+                            class="fas fa-folder-open"></i> Categories</a></li>
                 </ul>
             </div>
         </div>
@@ -77,10 +105,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table th:object="${userList}" id="userTable" border="1">
-
-                    </table>
-                    <table class="table" th:object="${categoryList}">
+                    <table id="data" class="table" th:object="${categoryList}">
                         <thead>
                         <tr>
                             <th scope="col">Id</th>
@@ -97,10 +122,12 @@
                             <td>
                                 <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                                     <a th:href="@{/admin/category/edit/{id}(id=${category.getCategoryId()})}">
-                                        <button type="button" class="btn btn-light"><i class="fas fa-edit"> Edit</i></button>
+                                        <button type="button" class="btn btn-light"><i class="fas fa-edit"> Edit</i>
+                                        </button>
                                     </a>
                                     <a th:href="@{/admin/category/delete/{id}(id=${category.getCategoryId()})}">
-                                        <button type="button" class="btn btn-light"><i class="fas fa-trash-alt"> Delete</i></button>
+                                        <button type="button" class="btn btn-light"><i class="fas fa-trash-alt">
+                                            Delete</i></button>
                                     </a>
                                 </div>
                             </td>

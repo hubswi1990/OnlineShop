@@ -24,7 +24,8 @@ public class Category {
 
     private LocalDate date;
 
-    @Deprecated
+
+
     public Category() {}
 
     public Category(String categoryName) {
