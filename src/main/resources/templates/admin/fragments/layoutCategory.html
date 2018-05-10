@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Admin Dashboard</title>
     <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/MyStyle.css}" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
@@ -22,11 +21,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarsExample07">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" th:href="@{/admin/home}">Dashboard <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" th:href="@{/admin/category}">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin/product}">Products</a>
                 </li>
             </ul>
 
@@ -41,30 +43,17 @@
     <div class="row">
         <div class="col-12 mt-3">
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                </ol>
+                <div layout:fragment="content-breadcrumb"></div>
             </nav>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3 mr-3">
-            <div class="card" style="width: 18rem;">
-                <div class="card-header">
-                    <i class="fas fa-cog"></i> Dashboard
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item MyElelment"><a th:href="@{/admin/category}"><i class="fas fa-folder-open"></i> Categories</a></li>
-                </ul>
-            </div>
+            <div th:replace="admin/fragments/fragment-left-menu :: left-menu"></div>
         </div>
         <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Dashboard
-                </div>
-                <div class="card-body">
-                    <p th:text="${session.adminMessage}"></p></div>
+            <div class="card" layout:fragment="content">
+
             </div>
         </div>
     </div>

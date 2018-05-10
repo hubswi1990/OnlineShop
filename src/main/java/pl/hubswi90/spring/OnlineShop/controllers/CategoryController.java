@@ -22,7 +22,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/admin/category/add", method = RequestMethod.GET)
     public ModelAndView addCategoryForm() {
-        ModelAndView view =  new ModelAndView("admin/addCategory");
+        ModelAndView view =  new ModelAndView("admin/category/addCategory");
         Category category = new Category();
         view.addObject("category", category);
         return view;
@@ -30,7 +30,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/admin/category/add", method = RequestMethod.POST)
     public ModelAndView saveCategory(@Valid Category category, BindingResult bindingResult) {
-        ModelAndView view = new ModelAndView("admin/addCategory");
+        ModelAndView view = new ModelAndView("admin/category/addCategory");
 
         service.saveCategoruInDatabase(category);
         view.addObject("successMessage", "Category named " +category.getCategoryName() +" has been added");
@@ -40,7 +40,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/admin/category", method = RequestMethod.GET)
     public ModelAndView category() {
-        ModelAndView view = new ModelAndView("admin/category");
+        ModelAndView view = new ModelAndView("admin/category/category");
         view.addObject("categoryList", service.getAllCategoryFromDatabase());
         return view;
     }
@@ -59,7 +59,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/admin/category/edit/{id}", method = RequestMethod.GET)
     public ModelAndView showEditCategoryForm(@PathVariable long id) {
-        ModelAndView view =  new ModelAndView("admin/editCategory");
+        ModelAndView view =  new ModelAndView("admin/category/editCategory");
         Category category = service.getCategorybyIdFromDatabase(id);
         view.addObject("category", category);
         return view;
@@ -67,7 +67,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/admin/category/edit", method = RequestMethod.POST)
     public ModelAndView editCategoryInformationInDatabase(@Valid Category category, BindingResult bindingResult) {
-        ModelAndView view = new ModelAndView("admin/editCategory");
+        ModelAndView view = new ModelAndView("admin/category/editCategory");
         service.updateCategoryInDatabase(category);
         view.addObject("successMessage", "Category named " +category.getCategoryName() +" has been updated");
         return view;

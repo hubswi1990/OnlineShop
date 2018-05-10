@@ -10,6 +10,6 @@ public class ProductController {
     @RequestMapping(value = "/admin/product",method = RequestMethod.GET)
     public String showProducts() {
 
-        return "admin/product2";
+        return "admin/product/product";
     }
 }
