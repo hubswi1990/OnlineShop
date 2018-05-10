@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Admin Dashboard</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/MyStyle.css}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
+          integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+</head>
+<body>
+
+<div th:replace="admin/fragments/fragment-top-menu :: header"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <nav aria-label="breadcrumb">
+                <div layout:fragment="content-breadcrumb"></div>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 mr-3">
+            <div th:replace="admin/fragments/fragment-left-menu :: left-menu"></div>
+        </div>
+        <div class="col">
+            <div class="card" layout:fragment="content">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
