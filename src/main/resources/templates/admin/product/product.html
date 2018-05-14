@@ -2,7 +2,7 @@
 <html lang="en" layout:decorate="~{admin/fragments/layoutProduct}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Admin Panel</title>
 </head>
 <body>
 
@@ -14,36 +14,61 @@
 </div>
 
 <div layout:fragment="content">
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="card">
+        <div class="card-header">
+            Products
+
+            <div class="btn-group btn-group-sm float-right" role="group" aria-label="Basic example">
+                <a th:href="@{/admin/product/add}">
+                    <button type="button" class="btn btn-light"><i class="fas fa-plus"></i></button>
+                </a>
+                <button type="button" class="btn btn-light"><i class="fas fa-upload"></i></button>
+                <button type="button" class="btn btn-light"><i class="fas fa-download"></i></button>
+                <a th:href="@{/admin/product}">
+                    <button type="button" class="btn btn-light"><i class="fas fa-sync-alt"></i></button>
+                </a>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">name</th>
+                    <th scope="col">photo</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product :${productList}">
+                    <th scope="row"><span th:text="${product.getId()}"/></th>
+                    <td th:text="${product.getProductName()}"></td>
+                    <td><img height="50px" th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(product.getPhoto())}}"></td>
+                    <td th:text="${product.getProductCode()}"> </td>
+                    <td th:text="${product.getProductPrice()}"> </td>
+                    <td th:if="${product.isProductStatus()} == false"><i class="far fa-times-circle"></i></a></td>
+                    <td th:if="${product.isProductStatus()} == true"><i class="far fa-check-circle"></i></a></td>
+                    <td>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                            <a th:href="@{'/admin/product/edit/' + ${product.getId()}}">
+                                <button type="button" class="btn btn-light"><i class="fas fa-edit"> Edit</i>
+                                </button>
+                            </a>
+                            <a th:href="@{'/admin/product/delete/' + ${product.getId()}}">
+                                <button type="button" class="btn btn-light"><i class="fas fa-trash-alt">
+                                    Delete</i></button>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 </body>
 </html>
