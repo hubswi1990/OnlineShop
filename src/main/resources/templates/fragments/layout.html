@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Admin Dashboard</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/FrontCss.css}"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
+    <script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+</head>
+<body>
+<div th:replace="fragments/fragment-top-menu :: header"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <img th:src="@{../images/logo.jpg}">
+        </div>
+        <div class="col-4 align-self-center">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search ..."
+                       aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #149c82">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto" id="mainMenu">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 mt-2">
+            <nav aria-label="breadcrumb">
+                <div layout:fragment="content-breadcrumb"></div>
+            </nav>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3">
+            <p class="lead">Shop Name</p>
+            <div class="list-group">
+                <a th:each="category :${categoryList}" th:href="@{/category/{id}(id=${category.getCategoryId()})}"
+                   class="list-group-item"><span th:text="${category.getCategoryName()}"></span></a>
+            </div>
+        </div>
+        <div class="col-9" layout:fragment="content">
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/fragment-footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="content-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Products</a></li>
+        <li class="breadcrumb-item active" th:text="${product.getProductName()}"></li>
+    </ol>
+</div>
+
+<div layout:fragment="content">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-5">
+                    <img class="card-img-top" th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(product.getPhoto())}}">
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${product.getProductName()}"></h5>
+                            <p class="card-text" th:text="${product.getProductFullDescription()}"></p>
+                            <p class="card-text" th:text="'$ ' + ${product.getProductPrice()}"><h6></h6></p>
+                            <p>
+                            <hr>
+                            </p>
+                            <p>
+                                <a class="btn btn-primary w-25" href="#" role="button">Add to Cart</a>
+                                <a class="btn btn-outline-dark w-25" href="#" role="button">Buy Now</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

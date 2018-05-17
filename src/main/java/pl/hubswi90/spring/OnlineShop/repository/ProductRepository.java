@@ -19,6 +19,7 @@ public class ProductRepository {
         entityManager.persist(product);
     }
 
+    @Transactional
     public Product getProoductFromDatabse(long id) {
         return entityManager.find(Product.class, id);
     }
