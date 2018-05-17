@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OnlineShop</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/FrontCss.css}"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
+    <script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark navcolor">
+        <div class="container">
+            <a class="navbar-brand" href="">OnlineShop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07"
+                    aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExample07">
+                <ul class="navbar-nav ml-auto" id="topmenu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Cart (0,00 $)<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Newsletter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Sign In</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <img th:src="@{images/logo.jpg}">
+        </div>
+        <div class="col-4 align-self-center">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search ..."
+                       aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #149c82">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto" id="mainMenu">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 mt-2">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Products</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-3">
+            <p class="lead">Shop Name</p>
+            <div class="list-group">
+                <a th:each="category :${categoryList}" th:href="@{/category/{id}(id=${category.getCategoryId()})}"
+                   class="list-group-item"><span th:text="${category.getCategoryName()}"></span></a>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <div class="col-4 mb-3" th:each="product :${productList}">
+                    <div class="card h-100">
+                        <img class="card-img-top"
+                             th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(product.getPhoto())}}">
+                        <!--<img class="card-img-top" src="http://via.placeholder.com/286x180" alt="Card image cap">-->
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${product.getProductName()}"></h5>
+                            <p class="card-text" th:text="${product.getShortDescription()}"></p>
+                            <a href="#" class="btn btn-primary">Show More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Footer-->
+<footer class="pt-0">
+
+    <div style="background-color: #2c3e50;">
+        <div class="container">
+            <!--Grid row-->
+            <div class="row py-4 d-flex align-items-center">
+
+                <!--Grid column-->
+                <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0" style="color: white">
+                    <h6 class="mb-0 white-text">Get connected with us on social networks!</h6>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-6 col-lg-7 text-center text-md-right">
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+        </div>
+    </div>
+
+    <!--Footer Links-->
+    <div class="container mt-5 mb-4 text-center text-md-left">
+        <div class="row mt-3">
+
+            <!--First column-->
+            <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+                <h6 class="text-uppercase font-weight-bold">
+                    <strong>Company name</strong>
+                </h6>
+                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>Lorem ipsum dolor sit amet purus non augue. Lorem ipsum cursus
+                    justo orci lorem sodales pretium pellentesque. Proin cursus,
+                    lacus nonummy id.
+                </p>
+            </div>
+            <!--/.First column-->
+
+            <!--Second column-->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <h6 class="text-uppercase font-weight-bold">
+                    <strong>Products</strong>
+                </h6>
+                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <a href="#!">New Products</a>
+                </p>
+                <p>
+                    <a href="#!">Bestseller</a>
+                </p>
+                <p>
+                    <a href="#!">Contact</a>
+                </p>
+                <p>
+                    <a href="#!">About</a>
+                </p>
+            </div>
+            <!--/.Second column-->
+
+            <!--Third column-->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                <h6 class="text-uppercase font-weight-bold">
+                    <strong>Useful links</strong>
+                </h6>
+                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <a href="#!">My Account</a>
+                </p>
+                <p>
+                    <a href="#!">My Orders</a>
+                </p>
+                <p>
+                    <a href="#!">My Adress</a>
+                </p>
+                <p>
+                    <a href="#!">My Personal Info</a>
+                </p>
+            </div>
+            <!--/.Third column-->
+
+            <!--Fourth column-->
+            <div class="col-md-4 col-lg-3 col-xl-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <strong>Contact</strong>
+                </h6>
+                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <i class="fa fa-home mr-3"></i> New York, NY 10012, US</p>
+                <p>
+                    <i class="fa fa-envelope mr-3"></i> info@example.com</p>
+                <p>
+                    <i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
+                <p>
+                    <i class="fa fa-print mr-3"></i> + 01 234 567 89</p>
+            </div>
+            <!--/.Fourth column-->
+
+        </div>
+    </div>
+    <!--/.Footer Links-->
+
+    <!-- Copyright-->
+    <div class="footer-copyright py-3 text-center">
+        © 2018 Copyright:
+        <a href="">
+            <strong> OnlineShop by hubswi90</strong>
+        </a>
+    </div>
+    <!--/.Copyright -->
+
+</footer>
+<!--/.Footer-->
+
+</body>
+</html>
