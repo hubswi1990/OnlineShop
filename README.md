@@ -1,5 +1,5 @@
 # OnlineShop
-I developed Web Application using Spring Boot (ver. 2.0.1) with multiple modules. To create the application I used following tools and technologies:
+I created online store using Spring Boot (ver. 2.0.1) with multiple modules. To create the application I used following tools and technologies:
 
 - Spring (Boot, MVC, Data, Security)
 - Hibernate, JPA, PostgreSQL
