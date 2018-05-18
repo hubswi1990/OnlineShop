@@ -40,7 +40,7 @@
                     <input type="text" th:field="*{productName}" class="form-control" id="exampleFormControlInput1">
                 </div>
                 <div class="form-group">
-                    <label>Description: </label>
+                    <label>Add File: </label>
                     <input type="file" class="form-control" id="myFile" name="myFile">
                 </div>
                 <div class="form-group">
@@ -60,7 +60,7 @@
                     <textarea th:field="*{productFullDescription}" class="form-control" rows="5"></textarea>
                 </div>
                 <div class="form-group">
-                    <label>Example select</label>
+                    <label>Category:</label>
                     <select class="form-control" id="myCategory" name="myCategory">
                         <option th:each="category :${categoryList}" th:value="${category.getCategoryId()}" th:text="${category.getCategoryName()}"></option>
                     </select>

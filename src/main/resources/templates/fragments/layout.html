@@ -32,13 +32,20 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #149c82">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto" id="mainMenu">
+                    <ul class="navbar-nav mr-auto mainMenu" id="mainMenu">
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="#">Products</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto mainMenu">
+                        <li class="nav-link"><a style="color: white; font-weight: bold">Eng</a></li>
+                        <li class="nav-link"><a style="color: white; font-weight: bold">$ USD</a></li>
                     </ul>
                 </div>
             </nav>
@@ -54,7 +61,7 @@
     </div>
     <div class="row mb-3">
         <div class="col-3">
-            <p class="lead">Shop Name</p>
+            <p class="lead">Categories:</p>
             <div class="list-group">
                 <a th:each="category :${categoryList}" th:href="@{/category/{id}(id=${category.getCategoryId()})}"
                    class="list-group-item"><span th:text="${category.getCategoryName()}"></span></a>
