@@ -45,17 +45,24 @@ public class ProductController {
 
     @RequestMapping(value = "/admin/product/add", method = RequestMethod.POST)
     public ModelAndView saveProduct(@Valid Product product, BindingResult bindingResult, @RequestParam("myFile")MultipartFile file, @RequestParam("myCategory")Long id) throws IOException {
-        ModelAndView view = new ModelAndView("admin/product/addProduct");
 
-        product.setPhoto(file.getBytes());
+        if(bindingResult.hasErrors()) {
 
-        Category category = categoryService.getCategorybyIdFromDatabase(id);
-        product.setProductCategory(category);
-        service.saveProduct(product);
+            ModelAndView view =  new ModelAndView("admin/product/addProduct");
+            view.addObject("categoryList", categoryService.getAllCategoryFromDatabase());
+            return view;
+        } else {
+            ModelAndView view = new ModelAndView("admin/product/addProduct");
 
-        view.addObject("successMessage", "Product named " +product.getProductName() +" has been added");
-        view.addObject("product", new Product());
-        return view;
+            product.setPhoto(file.getBytes());
+
+            Category category = categoryService.getCategorybyIdFromDatabase(id);
+            product.setProductCategory(category);
+            service.saveProduct(product);
+            view.addObject("successMessage", "Product named " +product.getProductName() +" has been added");
+            view.addObject("product", new Product());
+            return view;
+        }
     }
 
     @RequestMapping(value = "admin/product/detail")

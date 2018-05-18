@@ -1,6 +1,8 @@
 package pl.hubswi90.spring.OnlineShop.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
@@ -16,6 +18,8 @@ public class Category {
     @Column(name = "category_id")
     private long categoryId;
 
+    @NotNull(message = "category name can not be empty")
+    @Size(min = 2, max = 25, message = "min 2 or max 25 characters")
     @Column(name = "category_name", unique = true)
     private String categoryName;
 

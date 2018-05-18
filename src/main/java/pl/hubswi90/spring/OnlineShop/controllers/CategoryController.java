@@ -30,12 +30,18 @@ public class CategoryController {
 
     @RequestMapping(value = "/admin/category/add", method = RequestMethod.POST)
     public ModelAndView saveCategory(@Valid Category category, BindingResult bindingResult) {
-        ModelAndView view = new ModelAndView("admin/category/addCategory");
 
-        service.saveCategoruInDatabase(category);
-        view.addObject("successMessage", "Category named " +category.getCategoryName() +" has been added");
-        view.addObject("category", new Category());
-        return view;
+
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("admin/category/addCategory");
+        } else {
+
+            service.saveCategoruInDatabase(category);
+            ModelAndView view = new ModelAndView("admin/category/addCategory");
+            view.addObject("successMessage", "Category named " + category.getCategoryName() + " has been added");
+            view.addObject("category", new Category());
+            return view;
+        }
     }
 
     @RequestMapping(value = "/admin/category", method = RequestMethod.GET)

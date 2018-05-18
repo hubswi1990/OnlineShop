@@ -2,6 +2,7 @@ package pl.hubswi90.spring.OnlineShop.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "products")
@@ -14,6 +15,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotNull(message = "product name can not be empty")
+    @Size(min = 5, max = 100)
     @Column(name = "product_name")
     private String productName;
 
@@ -24,15 +27,18 @@ public class Product {
     @Column(name = "product_code")
     private String productCode;
 
+    @NotNull(message = "product price can not be empty")
     @Column(name = "product_price", scale = 7, precision = 2)
     private double productPrice;
 
     @Column(name = "product_status")
     private boolean productStatus;
 
+    @NotNull(message = "product short description can not be empty")
     @Column(name = "product_shortDescription", columnDefinition = "text")
     private String shortDescription;
 
+    @NotNull(message = "product full description can not be empty")
     @Column(name = "product_description", columnDefinition = "text")
     private String productFullDescription;
 
