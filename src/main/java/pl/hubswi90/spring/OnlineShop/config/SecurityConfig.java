@@ -30,6 +30,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
+    @Autowired
+    private EmployeeAuthenticationSuccessHandler successHandler;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
@@ -52,17 +55,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/webjars/**").permitAll()
                 .antMatchers("/images/**").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/registration").permitAll()
-                .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
-                .authenticated().and().csrf().disable().formLogin()
-                .loginPage("/login").failureUrl("/login?error=true")
-                .defaultSuccessUrl("/admin/home")
+                .antMatchers("/registration").permitAll();
+
+        http.authorizeRequests().antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
+                .authenticated().and().formLogin().successHandler(successHandler)
+                .loginPage("/login").permitAll().failureUrl("/login?error=true")
                 .usernameParameter("email")
-                .passwordParameter("password")
-                .and().logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .passwordParameter("password").and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/").and().exceptionHandling()
                 .accessDeniedPage("/access-denied");
+
+        http.authorizeRequests().antMatchers("/user/**").hasAuthority("USER").anyRequest()
+                .authenticated().and().formLogin().successHandler(successHandler)
+                .loginPage("/login").permitAll().failureUrl("/login?error=true")
+                .usernameParameter("email")
+                .passwordParameter("password").and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/").and().exceptionHandling()
+                .accessDeniedPage("/access-denied");
+
+        http.csrf().disable();
     }
 
     @Override

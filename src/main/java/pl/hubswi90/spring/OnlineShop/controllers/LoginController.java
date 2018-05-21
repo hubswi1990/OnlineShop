@@ -60,6 +60,7 @@ public class LoginController {
 
     @RequestMapping(value="/admin/home", method = RequestMethod.GET)
     public ModelAndView home(HttpSession session){
+        System.out.println("jjajajajj");
         ModelAndView modelAndView = new ModelAndView("admin/home");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
