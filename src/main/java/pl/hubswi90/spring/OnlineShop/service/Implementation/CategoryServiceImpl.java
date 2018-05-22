@@ -1,10 +1,11 @@
-package pl.hubswi90.spring.OnlineShop.service;
+package pl.hubswi90.spring.OnlineShop.service.Implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.hubswi90.spring.OnlineShop.domain.Category;
 import pl.hubswi90.spring.OnlineShop.repository.CategoryRepository;
+import pl.hubswi90.spring.OnlineShop.service.CategoryService;
 
 import java.time.LocalDate;
 import java.util.List;

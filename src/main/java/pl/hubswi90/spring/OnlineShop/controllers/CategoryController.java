@@ -57,12 +57,6 @@ public class CategoryController {
         return "redirect:/admin/category";
     }
 
-    @RequestMapping(value = "/admin/category/duplicate/{id}", method = RequestMethod.GET)
-    public String duplicateCategory(@PathVariable ("id") long id) {
-        service.duplicateCategory(id);
-        return "redirect:/admin/category";
-    }
-
     @RequestMapping(value = "/admin/category/edit/{id}", method = RequestMethod.GET)
     public ModelAndView showEditCategoryForm(@PathVariable long id) {
         ModelAndView view =  new ModelAndView("admin/category/editCategory");

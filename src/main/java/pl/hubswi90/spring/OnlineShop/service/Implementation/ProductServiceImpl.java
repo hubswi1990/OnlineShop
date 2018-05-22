@@ -1,10 +1,11 @@
-package pl.hubswi90.spring.OnlineShop.service;
+package pl.hubswi90.spring.OnlineShop.service.Implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.hubswi90.spring.OnlineShop.domain.Product;
 import pl.hubswi90.spring.OnlineShop.repository.ProductRepository;
+import pl.hubswi90.spring.OnlineShop.service.ProductService;
 
 import java.util.List;
 

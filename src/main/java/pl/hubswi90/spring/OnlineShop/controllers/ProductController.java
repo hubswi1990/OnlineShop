@@ -65,13 +65,6 @@ public class ProductController {
         }
     }
 
-    @RequestMapping(value = "admin/product/detail")
-    public ModelAndView showimage() {
-        ModelAndView view = new ModelAndView("admin/product/detail");
-        view.addObject("productList", service.getAllProduct());
-        return view;
-    }
-
     @RequestMapping(value = "/admin/product/delete/{id}", method = RequestMethod.GET)
     public String removeProduct(@PathVariable("id") long id) {
         service.deleteProduct(id);

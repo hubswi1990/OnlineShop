@@ -1,4 +1,4 @@
-package pl.hubswi90.spring.OnlineShop.service;
+package pl.hubswi90.spring.OnlineShop.service.Implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -7,12 +7,13 @@ import pl.hubswi90.spring.OnlineShop.domain.Role;
 import pl.hubswi90.spring.OnlineShop.domain.User;
 import pl.hubswi90.spring.OnlineShop.repository.RoleRepository;
 import pl.hubswi90.spring.OnlineShop.repository.UserRepository;
+import pl.hubswi90.spring.OnlineShop.service.UserService;
 
 import java.util.Arrays;
 import java.util.HashSet;
 
 @Service("userService")
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;

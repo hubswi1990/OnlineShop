@@ -14,17 +14,18 @@ import java.io.IOException;
 import java.util.Collection;
 
 @Component
-public class EmployeeAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest arg0, HttpServletResponse arg1,
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
-
         boolean hasUserRole = false;
         boolean hasAdminRole = false;
+
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+
         for (GrantedAuthority grantedAuthority : authorities) {
             if (grantedAuthority.getAuthority().equals("USER")) {
                 hasUserRole = true;
@@ -36,9 +37,9 @@ public class EmployeeAuthenticationSuccessHandler implements AuthenticationSucce
         }
 
         if (hasUserRole) {
-            redirectStrategy.sendRedirect(arg0, arg1, "/user/home");
+            redirectStrategy.sendRedirect(request, response, "/user/home");
         } else if (hasAdminRole) {
-            redirectStrategy.sendRedirect(arg0, arg1, "/admin/home");
+            redirectStrategy.sendRedirect(request, response, "/admin/home");
         } else {
             throw new IllegalStateException();
         }
