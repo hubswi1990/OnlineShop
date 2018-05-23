@@ -7,7 +7,8 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "products")
 @NamedQueries({
-        @NamedQuery(name = "getAllProduct", query = "SELECT p from Product p")
+        @NamedQuery(name = "getAllProduct", query = "SELECT p from Product p"),
+        @NamedQuery(name = "getWhereCategory", query = "SELECT p FROM Product p WHERE p.productCategory.categoryId = :name")
 })
 public class Product {
 
@@ -28,7 +29,7 @@ public class Product {
     private String productCode;
 
     @NotNull(message = "product price can not be empty")
-    @Column(name = "product_price", scale = 7, precision = 2)
+    @Column(name = "product_price", scale = 9, precision = 2)
     private double productPrice;
 
     @Column(name = "product_status")

@@ -13,44 +13,7 @@
 <div th:replace="fragments/fragment-top-menu :: header"></div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-8">
-            <img th:src="@{../images/logo.jpg}">
-        </div>
-        <div class="col-4 align-self-center">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search ..."
-                       aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row mt-2">
-        <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #149c82">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto" id="mainMenu">
-                        <li class="nav-item active">
-                            <a class="item-white nav-link" href="#" style="color: white; font-weight: bold">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: white; font-weight: bold">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: white; font-weight: bold">Contact</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto mainMenu">
-                        <li class="nav-link"><a style="color: white; font-weight: bold">Eng</a></li>
-                        <li class="nav-link"><a style="color: white; font-weight: bold">$ USD</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </div>
+    <div th:replace="fragments/fragment-header :: heder"></div>
 
     <div class="row">
         <div class="col-12 mt-2">
@@ -63,7 +26,7 @@
         <div class="col-3">
             <p class="lead">Categories:</p>
             <div class="list-group">
-                <a th:each="category :${categoryList}" th:href="@{/category/{id}(id=${category.getCategoryId()})}"
+                <a th:each="category :${categoryList}" th:href="@{/products/category/{id}(id=${category.getCategoryId()})}"
                    class="list-group-item"><span th:text="${category.getCategoryName()}"></span></a>
             </div>
         </div>

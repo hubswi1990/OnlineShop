@@ -1,4 +1,4 @@
-package pl.hubswi90.spring.OnlineShop.service.Implementation;
+package pl.hubswi90.spring.OnlineShop.service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

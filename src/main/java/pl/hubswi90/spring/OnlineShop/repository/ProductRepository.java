@@ -6,6 +6,7 @@ import pl.hubswi90.spring.OnlineShop.domain.Product;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -37,5 +38,12 @@ public class ProductRepository {
     @Transactional
     public void updateProductInDatabase(Product p) {
         entityManager.merge(p);
+    }
+
+    @Transactional
+    public List<Product> getProductInCategory(long categoryId) {
+        Query query = entityManager.createNamedQuery("getWhereCategory");
+        query.setParameter("name", categoryId);
+        return query.getResultList();
     }
 }

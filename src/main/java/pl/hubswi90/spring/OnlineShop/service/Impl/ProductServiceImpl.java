@@ -1,4 +1,4 @@
-package pl.hubswi90.spring.OnlineShop.service.Implementation;
+package pl.hubswi90.spring.OnlineShop.service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +43,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void updateProduct(Product product) {
         repository.updateProductInDatabase(product);
+    }
+
+    @Override
+    public List<Product> getProductsInCategory(long id) {
+        return repository.getProductInCategory(id);
     }
 }

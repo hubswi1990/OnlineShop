@@ -9,7 +9,8 @@
 <div layout:fragment="content-breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-        <li class="breadcrumb-item"><a th:href="@{/}">Products</a>
+        <li class="breadcrumb-item"><a th:href="@{/products}">Products</a>
+        <li class="breadcrumb-item"><a th:href="@{'/products/category/' + ${product.getProductCategory().getCategoryId()}}" th:text="${product.getProductCategory().getCategoryName()}"></a>
         <li class="breadcrumb-item active" th:text="${product.getProductName()}"></li>
     </ol>
 </div>
@@ -31,8 +32,8 @@
                             <hr>
                             </p>
                             <p>
-                                <a class="btn btn-primary w-25" href="#" role="button">Add to Cart</a>
-                                <a class="btn btn-outline-dark w-25" href="#" role="button">Buy Now</a>
+                                <a th:href="@{'/shoppingcart/add/' + ${product.getId()}}" class="btn btn-primary w-25" href="#" role="button">Add to Cart</a>
+                                <a th:href="@{/shoppingcart}" class="btn btn-outline-dark w-25" href="#" role="button">Buy Now</a>
                             </p>
                         </div>
                     </div>

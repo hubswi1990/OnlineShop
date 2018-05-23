@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{fragments/ShoppingCartLayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>OnlineShop</title>
+</head>
+<body>
+
+<div layout:fragment="content-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+        <li class="breadcrumb-item active">Newsletter</li>
+    </ol>
+</div>
+
+<div layout:fragment="content">
+    <div class="card">
+        <div class="card-header">
+            Newsletter
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6 offset-3 text-center">
+                    <i class="far fa-envelope-open fa-5x mb-3"></i>
+                    <h2>Subscribe To Our Newsletter</h2>
+                    <p>Join our subscribers list to get tke latest news, updates ans special offers delivered directly in your inbox.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Enter your email">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon2">Subscribe</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

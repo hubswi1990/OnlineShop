@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>OnlineShop</title>
+</head>
+<body>
+
+<div layout:fragment="content-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+        <li class="breadcrumb-item"><a th:href="@{/products}">Products</a>
+        <li class="breadcrumb-item active" th:text="${categoryName}"></li>
+    </ol>
+</div>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-4 mb-3" th:each="product :${productList}">
+            <div class="card h-100">
+                <img class="card-img-top mt-2"
+                     th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(product.getPhoto())}}">
+
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${product.getProductName()}"></h5>
+                    <p class="card-text" th:text="${product.getShortDescription()}"></p>
+                    <a th:href="@{/productInfo/{id}(id=${product.getId()})}" class="btn btn-primary">Show More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

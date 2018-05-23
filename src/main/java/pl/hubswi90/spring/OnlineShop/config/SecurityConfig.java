@@ -54,7 +54,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/webjars/**").permitAll()
                 .antMatchers("/images/**").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/registration").permitAll();
+                .antMatchers("/registration").permitAll()
+                .antMatchers("/shoppingcart/**").permitAll()
+                .antMatchers("/products/**").permitAll()
+                .antMatchers("/contact").permitAll()
+                .antMatchers("/subscribe").permitAll();
 
         http.authorizeRequests().antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                 .authenticated().and().formLogin().successHandler(successHandler)

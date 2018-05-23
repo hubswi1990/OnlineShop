@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{fragments/ShoppingCartLayout}">
+<head>
+    <meta charset="UTF-8">
+    <title>OnlineShop</title>
+</head>
+<body>
+
+<div layout:fragment="content-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+        <li class="breadcrumb-item active">Shopping Cart</li>
+    </ol>
+</div>
+
+<div layout:fragment="content">
+    <div class="card">
+        <div class="card-header">
+            Shopping Cart
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Photo</th>
+                    <th scope="col">Product</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Price</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr  th:each="instance : ${productsMap}">
+                    <td><img height="50px" th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(instance.value.photo)}}"></td>
+                    <td th:text="${instance.value.productName}"></th>
+                    <td ></td>
+                    <td></td>
+                    <td>$ <span th:text="${instance.value.productPrice}"></span></td>
+                    <td><a th:href="@{'/shoppingcart/delete/' + ${instance.value.id}}" class="btn btn-danger active" role="button" aria-pressed="true"><i class="fas fa-times"></i> Remove</a></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><b>Total:</b></td>
+                    <td>$ <span th:text="${totalPrice}"></span></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a th:href="@{/}" class="btn btn-light active" role="button" aria-pressed="true"> <i class="fas fa-shopping-cart"></i> Continue shopping</a></td>
+                    <td><a href="#" class="btn btn-success" role="button" aria-pressed="true"> Buy Now <i class="fas fa-arrow-right"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
