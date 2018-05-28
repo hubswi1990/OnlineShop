@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css"/>
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">OnlineShop</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/FrontCss.css}"/>
+    <script src="/webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="/webjars/jquery/3.3.1-1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div th:replace="user/fragments/fragment-top-menu :: header"></div>
+
+    <div class="mt-2">
+        <nav aria-label="breadcrumb">
+            <div layout:fragment="content-breadcrumb"></div>
+        </nav>
+    </div>
+    <div layout:fragment="content">
+</div>
+</body>
+</html>

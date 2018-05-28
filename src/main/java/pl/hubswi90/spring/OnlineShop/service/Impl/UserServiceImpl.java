@@ -36,4 +36,25 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    @Override
+    public User findUserById(long id) {
+        return userRepository.getOne(id);
+    }
+
+    @Override
+    public boolean updateUser(User user) {
+        User userInDatabase = findUserById(user.getId());
+        boolean changed = false;
+
+        if(!user.getName().equals(userInDatabase.getName()) ||
+                !user.getLastName().equals(userInDatabase.getLastName()) ||
+                !user.getEmail().equals(userInDatabase.getEmail())) {
+            changed = true;
+            userInDatabase.setName(user.getName());
+            userInDatabase.setLastName(user.getLastName());
+            userInDatabase.setEmail(user.getEmail());
+            userRepository.save(userInDatabase);
+        }
+        return changed;
+    }
 }

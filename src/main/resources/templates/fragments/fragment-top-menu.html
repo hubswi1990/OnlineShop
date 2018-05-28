@@ -11,7 +11,7 @@
                     <li class="nav-item">
                         <!-- IF CUSTOMER IS ANONYMOUS -->
                         <div th:if="${session.sessionTotalPrice}">
-                            <a th:href="@{/shoppingcart}" class="nav-link" th:text="'Cart ($ ' +${totalPrice} +' )'">Cart ($ 0.00)<span class="sr-only">(current)</span></a>
+                            <a th:href="@{/shoppingcart}" class="nav-link" th:text="'Cart ($ ' +${session.sessionTotalPrice} +' )'">Cart ($ 0.00)<span class="sr-only">(current)</span></a>
                         </div>
                         <!-- ELSE -->
                         <div th:unless="${session.sessionTotalPrice}">
