@@ -21,9 +21,26 @@
                     <li class="nav-item">
                         <a th:href="@{/subscribe}" class="nav-link">Newsletter</a>
                     </li>
-                    <li class="nav-item">
-                        <a th:href="@{/login}" class="nav-link">Sign In</a>
-                    </li>
+                    <div th:if="${session.usernameEmail}">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               data-toggle="dropdown" id="dropdownMenu"
+                               aria-haspopup="true" aria-expanded="false"
+                               th:text="'( ' +${session.usernameEmail} +' )'">Dropdown</a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
+                                <a class="dropdown-item" th:href="@{/user/home}" href="#" style="color:black; font-weight:normal;">
+                                    <i class="fas fa-user-circle"></i> My Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" th:href="@{/logout}" href="#" style="color:black; font-weight:normal;">
+                                    <i class="fas fa-sign-out-alt"></i> Sign Out</a>
+                            </div>
+                        </li>
+                    </div>
+                    <div th:unless="${session.usernameEmail}">
+                        <li class="nav-item">
+                            <a th:href="@{/user/home}" class="nav-link">Sign In</a>
+                        </li>
+                    </div>
                 </ul>
             </div>
         </div>

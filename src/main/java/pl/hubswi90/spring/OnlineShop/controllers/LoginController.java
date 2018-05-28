@@ -80,6 +80,7 @@ public class LoginController {
         session.setAttribute("userSessionAtribute", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         session.setAttribute("adminMessage","Content Available Only for Users with User Role");
         session.setAttribute("userId", user.getId());
+        session.setAttribute("usernameEmail", user.getEmail());
 
         return modelAndView;
     }

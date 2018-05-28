@@ -36,3 +36,8 @@
 .blackLink a:visited {
     color: black;
 }
+
+#blackItemInMenu {
+color: black
+
+}
