@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean updateUser(User user) {
-        User userInDatabase = findUserById(user.getId());
+        User userInDatabase = findUserByQuery(user.getId());
         boolean changed = false;
 
         if(!user.getName().equals(userInDatabase.getName()) ||
@@ -56,5 +56,10 @@ public class UserServiceImpl implements UserService {
             userRepository.save(userInDatabase);
         }
         return changed;
+    }
+
+    @Override
+    public User findUserByQuery(long id) {
+        return userRepository.findBYUserId(id);
     }
 }

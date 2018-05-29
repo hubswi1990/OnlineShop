@@ -24,16 +24,20 @@
     color: white;;
 }
 
-.blackLink {
+.blackLinkItem {
     color: black;
 }
 
-.blackLink a:hover {
+.blackLinkItem a {
+    color: black;
+}
+
+.blackLinkItem a:hover {
     color: black;
     text-decoration: none;
 }
 
-.blackLink a:visited {
+.blackLinkItem a:visited {
     color: black;
 }
 

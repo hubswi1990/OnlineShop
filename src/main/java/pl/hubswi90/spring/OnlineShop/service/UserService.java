@@ -8,4 +8,6 @@ public interface UserService {
 
     public User findUserById(long id);
     public boolean updateUser(User user);
+
+    public User findUserByQuery(long id);
 }
