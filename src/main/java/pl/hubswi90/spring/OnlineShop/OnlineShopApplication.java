@@ -13,6 +13,7 @@ public class OnlineShopApplication implements CommandLineRunner {
 	}
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(OnlineShopApplication.class, args);
 	}
 }
