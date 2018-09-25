@@ -122,4 +122,16 @@ public class Product {
     public void setProductCategory(Category productCategory) {
         this.productCategory = productCategory;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", productName='" + productName + '\'' +
+                ", productCode='" + productCode + '\'' +
+                ", productPrice=" + productPrice +
+                ", productStatus=" + productStatus +
+                '}';
+    }
 }
+

@@ -16,7 +16,7 @@
 <div layout:fragment="content">
     <div class="row">
         <div class="col-4 mb-3" th:each="product :${productList}">
-            <div class="card h-100">
+            <div th:if="${product.isProductStatus()}" class="card h-100">
                 <img class="card-img-top mt-2"
                      th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(product.getPhoto())}}">
 

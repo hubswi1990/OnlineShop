@@ -1,0 +1,86 @@
+body {
+  background-color: #f1f5f8;
+}
+
+.options {
+margin-top: 100px;
+}
+
+.options .wrap {
+  padding: 1rem 2rem;
+  text-align: center;
+  background-color: #3b4652;
+  opacity: 0.95;
+  box-shadow: 0px 0px 3px #848484;
+}
+
+.blockimages {
+  margin-top: -50px;
+  margin-bottom: 35px;
+}
+
+.wrap img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 2px #848484;
+}
+
+.login-content {
+margin-top: 100px;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group input {
+  height: 42px;
+  border-radius: 5px;
+  border: 0;
+  font-size: 18px;
+  padding-left: 50px;
+}
+
+.form-group::before {
+  font-family: 'Font Awesome\ 5 Free';
+  content: "\f406";
+  font-weight: 900;
+  position: absolute;
+  font-size: 22px;
+  color: #555e60;
+  left: 59px;
+  padding-top: 4px;
+}
+
+.form-group:last-of-type::before {
+  content: "\f09c";
+  font-weight: 900;
+}
+
+.btn {
+  background-color: #27c2a5;
+  color: #fff;
+  font-size: 19px;
+  padding: 7px 21px;
+  border-radius: 5px;
+  border-bottom: 4px solid #219882;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #25a890;
+  border-bottom: 4px solid #25a890 !important;
+}
+
+.forgot {
+  padding: 15px 0 25px;
+}
+
+.forgot a {
+  color: #c2fbfe;
+}
